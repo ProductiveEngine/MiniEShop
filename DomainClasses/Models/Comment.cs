@@ -11,7 +11,7 @@ namespace DomainClasses.Models
 
         public int? ProductID { get; set; }
 
-        [StringLength(500)]
+        [StringLength(500)] 
         public string Message { get; set; }
 
         public virtual Member Member { get; set; }
