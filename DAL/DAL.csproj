@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accessors\MemberAccessor.cs" />
     <Compile Include="Accessors\ProductAccessor.cs" />
     <Compile Include="Base\BaseContext.cs" />
     <Compile Include="Base\ContextHelpers.cs" />
@@ -59,7 +60,9 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepo\IEntityRepo.cs" />
+    <Compile Include="Repositories\IRepo\IMemberRepo.cs" />
     <Compile Include="Repositories\IRepo\IProductRepo.cs" />
+    <Compile Include="Repositories\MemberRepo.cs" />
     <Compile Include="Repositories\ProductRepo.cs" />
     <Compile Include="UOW\MEUOW.cs" />
   </ItemGroup>

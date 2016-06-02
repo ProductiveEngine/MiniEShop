@@ -7,20 +7,20 @@ namespace BL
 {
     public class ProductBL
     {
-        private readonly ProductAccessor _categoryAccessor;
+        private readonly ProductAccessor _productAccessor;
 
         public ProductBL()
         {
-            _categoryAccessor = new ProductAccessor();
+            _productAccessor = new ProductAccessor();
         }
 
         public List<Product> FindAll()
         {
             List<Product> catList;
 
-            using (var categoryAccessor = new ProductAccessor())
+            using (var productAccessor = new ProductAccessor())
             {
-                catList = _categoryAccessor.Repo.All.ToList();
+                catList = _productAccessor.Repo.All.ToList();
             }
             return catList;
         }
@@ -29,23 +29,23 @@ namespace BL
         {
             IQueryable<Product> qCateogry;
 
-            using (var categoryAccessor = new ProductAccessor())
+            using (var productAccessor = new ProductAccessor())
             {
-                qCateogry = categoryAccessor.Repo.All;
+                qCateogry = productAccessor.Repo.All;
             }
             return qCateogry;
         }
 
         public bool Save(Product vo)
         {
-            _categoryAccessor.Repo.InsertOrUpdate(vo);
-            return _categoryAccessor.Save();
+            _productAccessor.Repo.InsertOrUpdate(vo);
+            return _productAccessor.Save();
         }
 
         public bool Remove(int id)
         {
-            _categoryAccessor.Repo.Delete(id);
-            return _categoryAccessor.Save();
+            _productAccessor.Repo.Delete(id);
+            return _productAccessor.Save();
         }
     }
 }
