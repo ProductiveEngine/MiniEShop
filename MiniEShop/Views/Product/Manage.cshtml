@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage</h2>
+
+<div ng:controller="RouteCtrl">
+
+    <div id="header">
+        Angular Test
+        <button ng:click="addWine()">New Wine</button>
+    </div>
+
+    <div id="sidebar">
+        <ng:include src="'~/Product/_list.cshtml'"></ng:include>
+    </div>
+
+    <div id="content">
+        <ng:view>            
+        </ng:view>
+    </div>
+
+    
+</div>
+
+<script src="~/Scripts/angular.js" ng:autobind></script>
+<script src="~/Scripts/angular/app.js"></script>
+<script src="~/Scripts/angular/services/ProductData.js"></script>
+<script src="~/Scripts/angular/controllers/ProductController.js"></script>
+

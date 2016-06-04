@@ -1,0 +1,29 @@
+﻿<div class="form-left-col">
+    <label>Id:</label>
+    <input name="productId" type="text" value="{{ product.productId }}" disabled />
+
+    <label>Name:</label>
+    <input type="text" name="product.productName" value="{{ product.productName }}" required />
+
+    <label>ProductType:</label>
+    <input type="text" name="product.productType" value="{{ product.productType }}" />
+
+    <label>Description:</label>
+    <input type="text" name="product.description" value="{{ product.description }}" />
+
+    <label>Stock:</label>
+    <input type="text" name="product.stock" value="{{ product.stock }}" />
+
+    <label>Price:</label>
+    <input type="text" name="product.price" value="{{ product.price }}" />
+
+    <button class="save" ng:click="saveProduct()">Save</button>
+    <button class="delete" ng:click="deleteProduct()">Delete</button>
+</div>
+
+@*<div class="form-right-col">
+    <img width="250" height="300" src="pics/{{ product.picture }}" onerror="this.src = 'pics/generic.jpg'"/>
+    <label>Notes:</label>
+    <textarea name="product.description">{{ product.description }}</textarea>
+</div>*@
+

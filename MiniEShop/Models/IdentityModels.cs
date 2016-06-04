@@ -28,5 +28,7 @@ namespace MiniEShop.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<DomainClasses.Models.Product> Products { get; set; }
     }
 }

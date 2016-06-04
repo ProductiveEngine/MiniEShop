@@ -9,8 +9,7 @@ namespace BL
     {
         MemberBL _MemberBL = new MemberBL();
 
-        public bool SetMemberState(string username, 
-                        string primaryUsername = null)
+        public bool SetMemberState(string username)
         {
             try
             {

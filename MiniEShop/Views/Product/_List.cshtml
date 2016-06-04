@@ -1,0 +1,5 @@
+﻿<ul ng:controller="ProductListCtrl">
+    <li ng:repeat="product in products">
+        <a href='#/products/{{ product.id }}'>{{ product.productName }}</a>
+    </li>
+</ul>

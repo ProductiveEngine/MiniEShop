@@ -18,6 +18,8 @@ namespace MiniEShop.Controllers
             var pBL = new ProductBL();
             var s = pBL.Save(new Product {ProductName = "Test"});
 
+            ViewBag.UserName = MemberStateBL.State.UserName;
+
             return View();
         }
 

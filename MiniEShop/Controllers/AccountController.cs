@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BL;
+using DomainClasses.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -58,14 +60,14 @@ namespace MiniEShop.Controllers
                 return View(model);
             }
 
-            //bool ok = new MemberStatePrepareBL().SetMemberState(model.UserName, CacheUtil.AdminMember);
+            bool ok = new MemberStatePrepareBL().SetMemberState(model.Email);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
             switch (result)
             {
-                case SignInStatus.Success:
+                case SignInStatus.Success:                    
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -140,14 +142,14 @@ namespace MiniEShop.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                ////new MemberStatePrepareBL().SetMemberState(model.UserName, CacheUtil.AdminMember);
-                
+            {                                
                 var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, false, false);
+
+                    new MemberBL().Save(new Member() {Username = user.UserName});
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
