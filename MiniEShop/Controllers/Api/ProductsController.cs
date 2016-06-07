@@ -1,10 +1,13 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using BL;
 using DomainClasses.Models;
 using MiniEShop.Models;
 
@@ -13,11 +16,24 @@ namespace MiniEShop.Controllers.Api
     public class ProductsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private ProductBL _productBl = new ProductBL();
 
         // GET: api/Products
         public IQueryable<Product> GetProducts()
         {
-            return db.Products;
+
+            List<Product> aa;
+            try
+            {
+
+                 aa = db.Products.ToList();
+                 aa = _productBl.FindAll();
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            return _productBl.GetAll();
         }
 
         // GET: api/Products/5

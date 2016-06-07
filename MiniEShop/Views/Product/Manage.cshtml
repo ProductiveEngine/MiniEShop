@@ -3,29 +3,29 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>Manage</h2>
+<div ng-app="eshopApp">
+    <h2>Manage</h2>
 
-<div ng:controller="RouteCtrl">
+    <div ng:controller="ProductController">
 
-    <div id="header">
-        Angular Test
-        <button ng:click="addWine()">New Wine</button>
+
+        Write some text in textbox:
+        <input type="text" ng-model="sortorder" />
+
+        <h1>Hello {{ products }}</h1>
+
+        @*| filter:query*@
+        <ul class="thumbnails">
+            <li ng-repeat="product in products | orderBy:sortorder | limitTo:2 ">
+            </li>
+        </ul>
     </div>
-
-    <div id="sidebar">
-        <ng:include src="'~/Product/_list.cshtml'"></ng:include>
-    </div>
-
-    <div id="content">
-        <ng:view>            
-        </ng:view>
-    </div>
-
-    
 </div>
 
 <script src="~/Scripts/angular.js" ng:autobind></script>
+<script src="~/Scripts/angular-resource.js" ng:autobind></script>
+<script src="~/Scripts/angular-route.js" ng:autobind></script>
 <script src="~/Scripts/angular/app.js"></script>
 <script src="~/Scripts/angular/services/ProductData.js"></script>
 <script src="~/Scripts/angular/controllers/ProductController.js"></script>
-
+    

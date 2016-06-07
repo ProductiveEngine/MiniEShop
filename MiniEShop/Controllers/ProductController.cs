@@ -14,6 +14,7 @@ namespace MiniEShop.Controllers
             return View();
         }
 
+        [Authorize]
         // GET: Product
         public ActionResult Manage()
         {
