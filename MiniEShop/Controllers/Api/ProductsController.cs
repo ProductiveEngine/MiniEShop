@@ -22,31 +22,30 @@ namespace MiniEShop.Controllers.Api
         public IQueryable<Product> GetProducts()
         {
 
-            List<Product> aa;
+            IQueryable<Product> qProd;
             try
             {
-
-                 aa = db.Products.ToList();
-                 aa = _productBl.FindAll();
+                qProd = _productBl.GetAll();
             }
             catch (Exception ex)
             {
-                
+                qProd = null;
             }
-            return _productBl.GetAll();
+            return qProd;
         }
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            //Product product = await db.Products.FindAsync(id);
+            //if (product == null)
+            //{
+            //    return NotFound();
+            //}
 
-            return Ok(product);
+            //return Ok(product);
+            return Ok();
         }
 
         // PUT: api/Products/5
@@ -93,7 +92,7 @@ namespace MiniEShop.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            db.Products.Add(product);
+            //db.Products.Add(product);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = product.ProductID }, product);
@@ -103,13 +102,13 @@ namespace MiniEShop.Controllers.Api
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> DeleteProduct(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            Product product = null;// await db.Products.FindAsync(id);
             if (product == null)
             {
                 return NotFound();
             }
 
-            db.Products.Remove(product);
+            //db.Products.Remove(product);
             await db.SaveChangesAsync();
 
             return Ok(product);
@@ -126,7 +125,7 @@ namespace MiniEShop.Controllers.Api
 
         private bool ProductExists(int id)
         {
-            return db.Products.Count(e => e.ProductID == id) > 0;
+            return true;// db.Products.Count(e => e.ProductID == id) > 0;
         }
     }
 }

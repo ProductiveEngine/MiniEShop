@@ -57,6 +57,10 @@
     <Compile Include="Base\IUnitOfWork.cs" />
     <Compile Include="Base\StateHelpers.cs" />
     <Compile Include="Contexts\MEContext.cs" />
+    <Compile Include="Migrations\201606131658224_InitialCreate.cs" />
+    <Compile Include="Migrations\201606131658224_InitialCreate.Designer.cs">
+      <DependentUpon>201606131658224_InitialCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepo\IEntityRepo.cs" />
@@ -69,12 +73,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
       <Project>{dc5e606b-c921-42bf-b406-c86bc569d769}</Project>
       <Name>DomainClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606131658224_InitialCreate.resx">
+      <DependentUpon>201606131658224_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

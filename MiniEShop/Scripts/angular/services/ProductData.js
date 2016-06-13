@@ -1,14 +1,12 @@
 ﻿eshopApp.factory('productData', function ($resource) {
-    var resource = $resource('/api/products/:id', { id: '@_id' }, {
-                        update: {
-                            method: 'PUT' // this method issues a PUT request
-                        }
-                    });
+    var resource = $resource('/api/products/:id', { id: '@_id' });
 
     return {
-        getAllProducts: function() {
-             return resource.query();
+        getAllProducts: function () {
+            console.log(resource.query());
+            return resource.query();
         }
+       
     }
 });
 

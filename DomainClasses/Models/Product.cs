@@ -4,17 +4,8 @@ namespace DomainClasses.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public partial class Product
+    public partial class Product : Base.Base
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
-        {
-            Carts = new HashSet<Cart>();
-            Comments = new HashSet<Comment>();
-            Ratings = new HashSet<Rating>();
-            Transactions = new HashSet<Transaction>();
-        }
-        
         [Key]
         public int ProductID { get; set; }
 
@@ -31,17 +22,10 @@ namespace DomainClasses.Models
 
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comment> Comments { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rating> Ratings { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        
+        public virtual ICollection<Cart> Carts { get; set; }        
+        public virtual ICollection<Comment> Comments { get; set; }        
+        public virtual ICollection<Rating> Ratings { get; set; }        
         public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

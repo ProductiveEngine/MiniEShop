@@ -2,7 +2,7 @@ namespace DomainClasses.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public partial class Rating
+    public partial class Rating : Base.Base
     {        
         [Key]
         public int RatingID { get; set; }

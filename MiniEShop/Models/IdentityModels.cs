@@ -20,15 +20,13 @@ namespace MiniEShop.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", false)
+            : base("MEDB", false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }
-
-        public System.Data.Entity.DbSet<DomainClasses.Models.Product> Products { get; set; }
+        }        
     }
 }

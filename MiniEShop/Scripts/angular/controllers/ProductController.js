@@ -4,6 +4,8 @@ eshopApp.controller('ProductController',
     function ProductController($scope, productData) {
         $scope.sortorder = 'productName';
         $scope.allProducts = productData.getAllProducts();
+      
+
     }
 );
 

@@ -1,22 +1,16 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Manage";
 }
 
 <div ng-app="eshopApp">
-    <h2>Manage</h2>
+    <h2>Manage Products</h2>
 
     <div ng:controller="ProductController">
 
-
-        Write some text in textbox:
-        <input type="text" ng-model="sortorder" />
-
-        <h1>Hello {{ products }}</h1>
-
         @*| filter:query*@
         <ul class="thumbnails">
-            <li ng-repeat="product in products | orderBy:sortorder | limitTo:2 ">
+            <li ng-repeat="product in allProducts | orderBy:sortorder"> @*| limitTo:2*@ 
+                {{product.ProductName}}
             </li>
         </ul>
     </div>
@@ -28,4 +22,14 @@
 <script src="~/Scripts/angular/app.js"></script>
 <script src="~/Scripts/angular/services/ProductData.js"></script>
 <script src="~/Scripts/angular/controllers/ProductController.js"></script>
-    
+
+@*<span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+
+    Email:
+    <input type="email" name="myAddress" ng-model="myText" required>
+    <p>Edit the e-mail address, and try to change the status.</p>
+    <h1>Status</h1>
+    <p>Valid: {{myForm.myAddress.$valid}} (if true, the value meets all criteria).</p>
+    <p>Dirty: {{myForm.myAddress.$dirty}} (if true, the value has been changed).</p>
+    <p>Touched: {{myForm.myAddress.$touched}} (if true, the field has been in focus).</p>*@

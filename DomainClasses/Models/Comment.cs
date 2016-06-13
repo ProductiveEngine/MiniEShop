@@ -2,7 +2,7 @@ namespace DomainClasses.Models
 {
     using System.ComponentModel.DataAnnotations;
 
-    public partial class Comment
+    public partial class Comment : Base.Base
     {        
         [Key]
         public int CommentID { get; set; }
