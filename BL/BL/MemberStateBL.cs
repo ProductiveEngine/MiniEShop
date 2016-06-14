@@ -2,7 +2,7 @@
 using System.Linq;
 using DomainClasses.Models;
 
-namespace BL
+namespace BLL.BL
 {
     //=====================================================================================
     public class MemberStatePrepareBL

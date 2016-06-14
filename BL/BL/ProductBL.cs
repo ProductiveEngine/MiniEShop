@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DAL.Accessors;
 using DomainClasses.Models;
 
-namespace BL
+namespace BLL.BL
 {
-    public class ProductBL
+    public class ProductBL: IDisposable
     {
         private readonly ProductAccessor _productAccessor;
 
@@ -42,10 +44,21 @@ namespace BL
             return _productAccessor.Save();
         }
 
+        public Task<bool> SaveAsync(Product vo)
+        {
+            _productAccessor.Repo.InsertOrUpdate(vo);
+            return Task.Run(() => _productAccessor.Save());            
+        }
+
         public bool Remove(int id)
         {
             _productAccessor.Repo.Delete(id);
             return _productAccessor.Save();
+        }
+
+        public void Dispose()
+        {
+            _productAccessor.Dispose();
         }
     }
 }

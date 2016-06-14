@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BL;
+using BLL.BL;
 using DomainClasses.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;

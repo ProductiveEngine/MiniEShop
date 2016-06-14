@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using BL;
+using BLL.BL;
 using DomainClasses.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniEShop.Controllers;

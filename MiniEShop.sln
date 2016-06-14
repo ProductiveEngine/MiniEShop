@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniEShop", "MiniEShop\Mini
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniEShop.Tests", "MiniEShop.Tests\MiniEShop.Tests.csproj", "{37A6724B-5398-4943-B585-89781E87F1FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainClasses", "DomainClasses\DomainClasses.csproj", "{DC5E606B-C921-42BF-B406-C86BC569D769}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniEShop.DomainClasses", "DomainClasses\MiniEShop.DomainClasses.csproj", "{DC5E606B-C921-42BF-B406-C86BC569D769}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{DC2B2896-513A-4036-85DF-4E3BB8BE53E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniEShop.DAL", "DAL\MiniEShop.DAL.csproj", "{DC2B2896-513A-4036-85DF-4E3BB8BE53E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{C38C8D1D-E50B-4756-91A7-38C8A7D45A8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniEShop.BLL", "BL\MiniEShop.BLL.csproj", "{C38C8D1D-E50B-4756-91A7-38C8A7D45A8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

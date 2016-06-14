@@ -74,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
+    <ProjectReference Include="..\DomainClasses\MiniEShop.DomainClasses.csproj">
       <Project>{dc5e606b-c921-42bf-b406-c86bc569d769}</Project>
-      <Name>DomainClasses</Name>
+      <Name>MiniEShop.DomainClasses</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

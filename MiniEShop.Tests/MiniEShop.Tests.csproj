@@ -103,13 +103,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
+    <ProjectReference Include="..\BL\MiniEShop.BLL.csproj">
       <Project>{c38c8d1d-e50b-4756-91a7-38c8a7d45a8c}</Project>
-      <Name>BL</Name>
+      <Name>MiniEShop.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DomainClasses\DomainClasses.csproj">
+    <ProjectReference Include="..\DomainClasses\MiniEShop.DomainClasses.csproj">
       <Project>{dc5e606b-c921-42bf-b406-c86bc569d769}</Project>
-      <Name>DomainClasses</Name>
+      <Name>MiniEShop.DomainClasses</Name>
     </ProjectReference>
     <ProjectReference Include="..\MiniEShop\MiniEShop.csproj">
       <Project>{F350EF58-A865-49F4-9A18-8B9A9D49DC93}</Project>

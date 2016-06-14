@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -7,16 +6,15 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using BL;
+using BLL.BL;
 using DomainClasses.Models;
 using MiniEShop.Models;
 
 namespace MiniEShop.Controllers.Api
 {
     public class ProductsController : ApiController
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private ProductBL _productBl = new ProductBL();
+    {        
+        private readonly ProductBL _productBl = new ProductBL();
 
         // GET: api/Products
         public IQueryable<Product> GetProducts()
@@ -37,15 +35,15 @@ namespace MiniEShop.Controllers.Api
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> GetProduct(int id)
-        {
-            //Product product = await db.Products.FindAsync(id);
-            //if (product == null)
-            //{
-            //    return NotFound();
-            //}
+        {    
+            Product product = await _productBl.GetAll().FirstOrDefaultAsync(x => x.ProductID == id);
 
-            //return Ok(product);
-            return Ok();
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(product);
+
         }
 
         // PUT: api/Products/5
@@ -60,13 +58,11 @@ namespace MiniEShop.Controllers.Api
             if (id != product.ProductID)
             {
                 return BadRequest();
-            }
-
-            db.Entry(product).State = EntityState.Modified;
+            }                        
 
             try
             {
-                await db.SaveChangesAsync();
+                await _productBl.SaveAsync(product);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -91,10 +87,8 @@ namespace MiniEShop.Controllers.Api
             {
                 return BadRequest(ModelState);
             }
-
-            //db.Products.Add(product);
-            await db.SaveChangesAsync();
-
+            bool ok = await _productBl.SaveAsync(product);
+                        
             return CreatedAtRoute("DefaultApi", new { id = product.ProductID }, product);
         }
 
@@ -102,15 +96,13 @@ namespace MiniEShop.Controllers.Api
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> DeleteProduct(int id)
         {
-            Product product = null;// await db.Products.FindAsync(id);
-            if (product == null)
+            Product product = await _productBl.GetAll().FirstOrDefaultAsync(x => x.ProductID == id);
+
+            if (!_productBl.Remove(id))
             {
                 return NotFound();
             }
-
-            //db.Products.Remove(product);
-            await db.SaveChangesAsync();
-
+                        
             return Ok(product);
         }
 
@@ -118,14 +110,14 @@ namespace MiniEShop.Controllers.Api
         {
             if (disposing)
             {
-                db.Dispose();
+                _productBl.Dispose();                
             }
             base.Dispose(disposing);
         }
 
         private bool ProductExists(int id)
         {
-            return true;// db.Products.Count(e => e.ProductID == id) > 0;
+            return _productBl.GetAll().Count(e => e.ProductID == id) > 0;
         }
     }
 }

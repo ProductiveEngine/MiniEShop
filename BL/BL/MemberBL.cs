@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DAL.Accessors;
 using DomainClasses.Models;
 
-namespace BL
+namespace BLL.BL
 {
-    public class MemberBL
+    public class MemberBL : IDisposable
     {
         private readonly MemberAccessor _memberAccessor;
 
@@ -46,6 +47,11 @@ namespace BL
         {
             _memberAccessor.Repo.Delete(id);
             return _memberAccessor.Save();
+        }
+
+        public void Dispose()
+        {
+            _memberAccessor.Dispose();
         }
     }
 }
