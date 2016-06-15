@@ -2,6 +2,9 @@
     var resource = $resource('/api/products/:id', { id: '@_id' });
 
     return {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        },
         getAllProducts: function () {
             console.log(resource.query());
             return resource.query();

@@ -9,10 +9,35 @@
 
         @*| filter:query*@
         <ul class="thumbnails">
-            <li ng-repeat="product in allProducts | orderBy:sortorder"> @*| limitTo:2*@ 
+            <li ng-repeat="product in allProducts | orderBy:sortorder"> @*| limitTo:2*@
                 {{product.ProductName}}
             </li>
         </ul>
+
+        <div class="container-fluid">
+            <form name="productForm" ng-submit="updateProduct()">
+                <div class="row-fluid">
+                    <fieldset>
+                        <label for="productName">Product name:</label>
+                        <input focus id="productName" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Productname" ng-model="currentProduct.Productname"/>
+                        <label for="productType">Product type:</label>
+                        <input id="productType" type="number" placeholder="ProductType" ng-model="currentProduct.ProductType"/>
+                        <label for="description">Product type:</label>
+                        <input id="description" type="text" placeholder="Description" ng-model="currentProduct.Description"/>
+                        <label for="stock">Product type:</label>
+                        <input id="stock" type="number" placeholder="Stock" ng-model="currentProduct.Stock"/>
+                        <label for="price">Product type:</label>
+                        <input id="price" type="number" placeholder="Price" ng-model="currentProduct.Price" />
+                    </fieldset>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6 offset3">
+                        <div class="pull-left"><span class="btn">Cancel</span></div>
+                        <div class="pull-right"><button type="submit" class="btn btn-primary">Save</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

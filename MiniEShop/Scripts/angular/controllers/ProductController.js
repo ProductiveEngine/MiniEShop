@@ -4,8 +4,12 @@ eshopApp.controller('ProductController',
     function ProductController($scope, productData) {
         $scope.sortorder = 'productName';
         $scope.allProducts = productData.getAllProducts();
-      
-
+        $scope.currentProduct = {};
+        $scope.updateProduct = function () { 
+            $scope.productData.$update(function () {
+                alert('a');
+            });
+        };
     }
 );
 
