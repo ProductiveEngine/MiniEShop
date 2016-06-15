@@ -221,6 +221,7 @@
     <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\angular\app.js" />
+    <Content Include="Scripts\angular\controllers\EditProductController.js" />
     <Content Include="Scripts\angular\controllers\ProductController.js" />
     <Content Include="Scripts\angular\filters.js" />
     <Content Include="Scripts\angular\services\ProductData.js" />
@@ -276,6 +277,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Manage.cshtml" />
     <Content Include="Views\Product\_Details.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Product\NewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

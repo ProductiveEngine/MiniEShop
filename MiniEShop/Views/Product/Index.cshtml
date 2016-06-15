@@ -1,7 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products Index";
 }
 
-<h2>Index</h2>
+<div class="container" ng-app="eshopApp">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="#/newProduct">Create Product</a></li>
+            </ul>
+        </div>
+    </div>
 
+    <ng-view></ng-view>
+
+</div>
+
+
+
+<script src="~/Scripts/angular.js" ng:autobind></script>
+<script src="~/Scripts/angular-resource.js" ng:autobind></script>
+<script src="~/Scripts/angular-route.js" ng:autobind></script>
+<script src="~/Scripts/angular/app.js"></script>
+<script src="~/Scripts/angular/services/ProductData.js"></script>
+<script src="~/Scripts/angular/controllers/ProductController.js"></script>
