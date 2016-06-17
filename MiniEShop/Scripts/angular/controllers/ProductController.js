@@ -3,11 +3,27 @@
 eshopApp.controller('ProductController',
     function ProductController($scope, productData) {
         $scope.sortorder = 'productName';
-        productData.getProduct()
-            .$promise
-            .then(function (product) { $scope.product = product; })
-            .catch(function (response) { console.log(response); }
-        );                
+        $scope.allProducts = productData.getAllProducts();
+
+        $scope.product = {};
+
+        $scope.saveProduct = function (product, editProductForm) {
+            if (editProductForm.$valid) {
+                productData.save(product)
+                    .$promise
+                    .then(function (response) { console.log('success', response) })
+                    .catch(function (response) { console.log('failure', response) });
+            }
+        };
+
+        $scope.cancelProduct = function () {
+            
+        }
+        //productData.getProduct()
+        //    .$promise
+        //    .then(function (product) { $scope.product = product; })
+        //    .catch(function (response) { console.log(response); }
+        //);                
     }
 );
 

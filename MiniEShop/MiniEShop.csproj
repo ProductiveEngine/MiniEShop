@@ -277,8 +277,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\Manage.cshtml" />
     <Content Include="Views\Product\_Details.cshtml" />
-    <Content Include="Views\Product\ProductDetails.cshtml" />
-    <Content Include="Views\Product\NewProduct.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
