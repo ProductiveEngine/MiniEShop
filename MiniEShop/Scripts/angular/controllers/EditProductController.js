@@ -1,9 +1,12 @@
 ﻿'use strict';
 
 eshopApp.controller('EditProductController',
-    function EditProductController($scope, productData) {
+        function EditProductController($scope, $routeParams, productData) {
 
-        $scope.product = {};
+            $scope.product = productData.get({
+                //productId: ($routeParams.params === undefined) ? 0 : $routeParams.params.productId
+                productId: 2
+            });
 
         $scope.saveProduct = function (product, newProductForm) {
             if (newProductForm.$valid) {

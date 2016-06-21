@@ -3,10 +3,7 @@
 eshopApp.controller('ProductController',
     function ProductController($scope, productData) {
         $scope.sortorder = 'productName';
-        $scope.allProducts = productData.getAllProducts();
-
-        $scope.product = {};
-
+        $scope.allProducts = productData.query();        
         $scope.saveProduct = function (product, editProductForm) {
             if (editProductForm.$valid) {
                 productData.save(product)
