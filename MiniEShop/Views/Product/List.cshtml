@@ -1,1 +1,26 @@
 ﻿
+<div ng-controller="ProductController">
+    <h2>Manage Products</h2>
+
+    <label for="lsProductName">Live search (By product name):</label>
+    <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch" />
+    <a class="btn btn-default">New</a>
+    <hr>
+    <h4 class="header header-small grey">Product list</h4>
+    @* Product List *@
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @*| filter:query*@
+                <ul class="thumbnails">
+                    <li ng-repeat="product in allProducts | orderBy:sortorder">
+                        @*| limitTo:2*@
+                        @*<a href='#/products/{{ product.ProductID }}'> {{product.ProductName}}</a>*@
+                        <a ui-sref='productEdit({productId: product.ProductID })'> {{product.ProductName}}</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

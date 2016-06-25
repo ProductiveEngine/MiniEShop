@@ -3,50 +3,58 @@
 }
 
 <div ng-app="eshopApp">
+
     <div ng-controller="ProductController">
         <h2>Manage Products</h2>
 
         <label for="lsProductName">Live search (By product name):</label>
-        <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch" />
+        <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch"/>
         <a class="btn btn-default">New</a>
-        <hr>
-        <h4 class="header header-small grey">Product list</h4>
+        <hr>        
+        <h4 class="header header-small grey">Product list <a class="btn btn-default" ng-click="refreshProductsList()">Refresh</a></h4>                 
         @* Product List *@
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     @*| filter:query*@
                     <ul class="thumbnails">
                         <li ng-repeat="product in allProducts | orderBy:sortorder">
                             @*| limitTo:2*@
-                            <a href='#/products/{{ product.ProductID }}'> {{product.ProductName}}</a>
+                            @*<a href='#/products/{{ product.ProductID }}'> {{product.ProductName}}</a>*@
+                            <a ui-sref='productEdit({productId: product.ProductID })'> {{product.ProductName}}</a>
                         </li>
                     </ul>
                 </div>
-
+                <div class="container">
+                    <div ui-view></div>
+                </div>
             </div>
         </div>
+        
     </div>
-    <div id="content">
-        <ng:view></ng:view>
-    </div>
+
+   
+    @* Old way
+            <div id="content">
+            <ng:view></ng:view>
+        </div>*@
 </div>
 
 <script src="~/Scripts/angular.js" ng:autobind></script>
 <script src="~/Scripts/angular-resource.js" ng:autobind></script>
-<script src="~/Scripts/angular-route.js" ng:autobind></script>
+<script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
 <script src="~/Scripts/angular/app.js"></script>
 <script src="~/Scripts/angular/services/ProductData.js"></script>
 <script src="~/Scripts/angular/controllers/ProductController.js"></script>
 <script src="~/Scripts/angular/controllers/EditProductController.js"></script>
 
 @*<span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
-<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+    <form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
 
-    Email:
-    <input type="email" name="myAddress" ng-model="myText" required>
-    <p>Edit the e-mail address, and try to change the status.</p>
-    <h1>Status</h1>
-    <p>Valid: {{myForm.myAddress.$valid}} (if true, the value meets all criteria).</p>
-    <p>Dirty: {{myForm.myAddress.$dirty}} (if true, the value has been changed).</p>
-    <p>Touched: {{myForm.myAddress.$touched}} (if true, the field has been in focus).</p>*@
+        Email:
+        <input type="email" name="myAddress" ng-model="myText" required>
+        <p>Edit the e-mail address, and try to change the status.</p>
+        <h1>Status</h1>
+        <p>Valid: {{myForm.myAddress.$valid}} (if true, the value meets all criteria).</p>
+        <p>Dirty: {{myForm.myAddress.$dirty}} (if true, the value has been changed).</p>
+        <p>Touched: {{myForm.myAddress.$touched}} (if true, the field has been in focus).</p>*@
