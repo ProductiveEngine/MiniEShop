@@ -30,7 +30,7 @@
 //});
 
 eshopApp.service('productData', function ($resource) {
-    return $resource('/api/products/:productId', {}, {
+    return $resource('/api/products/:id', { id: '@_id' }, {
         update: { method: 'PUT' }
     });
 });

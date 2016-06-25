@@ -17,8 +17,17 @@ eshopApp.controller('EditProductController',
                         })
                         .catch(function (response) { console.log('failure', response) });
                 }
-            };           
+            };
 
+            $scope.deleteProduct = function (product) {
+                product.$delete();
+                //productData.delete(product)
+                //    .$promise
+                //    .then(function(response) {
+                //        $log.info('deletion success', response);
+                //    })
+                //    .catch(function(response) { $log.info('failure', response) });
+            };
         }
 );
 
