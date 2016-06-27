@@ -1,9 +1,9 @@
 ﻿'use strict';
 eshopApp.controller('EditProductController',
         function EditProductController($scope, $stateParams, productData, $log) {
-
+            
             $scope.product = productData.get({
-                productId: ($stateParams.productId === undefined) ? 0 : $stateParams.productId
+                id: ($stateParams.id === undefined) ? 0 : $stateParams.id
             });
 
             $scope.saveProduct = function () {
@@ -20,7 +20,12 @@ eshopApp.controller('EditProductController',
             };
 
             $scope.deleteProduct = function (product) {
-                product.$delete();
+                console.log(product);
+                product.$delete(function () {
+                        $window.location.href = '';
+                    });
+                
+
                 //productData.delete(product)
                 //    .$promise
                 //    .then(function(response) {

@@ -8,7 +8,7 @@ eshopApp.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('productEdit',
         {
-            url: '/product/:productId',
+            url: '/product/:id',
             templateUrl: 'Edit',
             controller: 'EditProductController'
         })

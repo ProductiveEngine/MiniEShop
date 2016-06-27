@@ -30,9 +30,13 @@
 //});
 
 eshopApp.service('productData', function ($resource) {
-    return $resource('/api/products/:id', { id: '@_id' }, {
-        update: { method: 'PUT' }
+    console.log('in delete' );
+    return $resource('/api/products/:id', { id: '@ProductID' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
     });
+
 });
 //Default function
 //get()

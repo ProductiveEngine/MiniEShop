@@ -12,6 +12,7 @@ using MiniEShop.Models;
 
 namespace MiniEShop.Controllers.Api
 {
+    [AllowAnonymous]
     public class ProductsController : ApiController
     {        
         private readonly ProductBL _productBl = new ProductBL();
