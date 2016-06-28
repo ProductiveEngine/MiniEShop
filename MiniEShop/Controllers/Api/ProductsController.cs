@@ -13,6 +13,7 @@ using MiniEShop.Models;
 namespace MiniEShop.Controllers.Api
 {
     [AllowAnonymous]
+    [RoutePrefix("api/products")]
     public class ProductsController : ApiController
     {        
         private readonly ProductBL _productBl = new ProductBL();
@@ -25,6 +26,22 @@ namespace MiniEShop.Controllers.Api
             try
             {
                 qProd = _productBl.GetAll();
+            }
+            catch (Exception ex)
+            {
+                qProd = null;
+            }
+            return qProd;
+        }
+
+        [Route("getProducts/filtered/{nameFilter}")]
+        public IQueryable<Product> GetProductsFiltered(string nameFilter)
+        {
+
+            IQueryable<Product> qProd;
+            try
+            {
+                qProd = _productBl.GetAll().Where(a => a.ProductName.Contains(nameFilter));
             }
             catch (Exception ex)
             {
@@ -83,7 +100,7 @@ namespace MiniEShop.Controllers.Api
         // POST: api/Products
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> PostProduct(Product product)
-        {
+        {            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

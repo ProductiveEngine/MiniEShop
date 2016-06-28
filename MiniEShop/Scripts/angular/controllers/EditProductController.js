@@ -1,38 +1,55 @@
 ﻿'use strict';
 eshopApp.controller('EditProductController',
-        function EditProductController($scope, $stateParams, productData, $log) {
+        function EditProductController($scope, $stateParams, ProductData, $log) {
             
-            $scope.product = productData.get({
+            $scope.product = ProductData.get({
                 id: ($stateParams.id === undefined) ? 0 : $stateParams.id
-            });
+            });            
 
             $scope.saveProduct = function () {
                 if ($scope.editProductForm.$valid) {
-                    $log.info('Form is valid');
+                    //$log.info('Form is valid');
+                    $scope.product.CreatedDate = new Date();
 
-                    productData.save($scope.product)
+                    ProductData.save($scope.product)
                         .$promise
                         .then(function(response) {
-                            console.log('success', response);                                                        
+                            //console.log('success', response);                                                        
                         })
                         .catch(function (response) { console.log('failure', response) });
                 }
             };
 
-            $scope.deleteProduct = function (product) {
-                console.log(product);
-                product.$delete(function () {
-                        $window.location.href = '';
-                    });
-                
-
-                //productData.delete(product)
+            $scope.deleteProduct = function (product) {                
+                product.$delete(function () {                       
+                });            
+                //ProductData.delete(product)
                 //    .$promise
                 //    .then(function(response) {
                 //        $log.info('deletion success', response);
                 //    })
                 //    .catch(function(response) { $log.info('failure', response) });
             };
+
+            $scope.updateProduct = function (product) {
+
+                if (product != null ) {
+                    if (product.ProductID > 0) {
+                        product.$update(function() {
+                        });
+                    } else {
+                        product.CreatedDate = new Date();
+
+                        ProductData.save(product)
+                        .$promise
+                        .then(function (response) {
+                            //console.log('success', response);                                                        
+                        })
+                        .catch(function (response) { console.log('failure', response) });
+                    }
+                }
+            };
+
         }
 );
 
@@ -41,15 +58,15 @@ eshopApp.controller('EditProductController',
 //ngRoute
 
 //eshopApp.controller('EditProductController',
-//        function EditProductController($scope, $routeParams, productData) {
+//        function EditProductController($scope, $routeParams, ProductData) {
 
-//            $scope.product = productData.get({
+//            $scope.product = ProductData.get({
 //                productId: ($routeParams.params === undefined) ? 0 : $routeParams.params.productId              
 //            });
 
 //        $scope.saveProduct = function (product, newProductForm) {
 //            if (newProductForm.$valid) {
-//                productData.save(product)
+//                ProductData.save(product)
 //                    .$promise
 //                    .then(function (response) { console.log('success', response) })
 //                    .catch(function (response) { console.log('failure', response) });

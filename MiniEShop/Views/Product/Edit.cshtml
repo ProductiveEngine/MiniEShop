@@ -3,34 +3,38 @@
 }
 <div ng-controller="EditProductController">
     @*Edit Product*@
-    <div class="col-md-6">
+    <div class="col-md-6">        
         @* <form class="form-inline" role="form"> *@
         @* Vertical no class on labels, no class on form *@
         <form name="editProductForm" ng-submit="saveProduct()" class="form-horizontal" role="form">
             @*ng-submit="updateProduct()"*@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="productName">Product name:</label>
-                <input focus id="productName" class="form-control" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Product name..." ng-model="product.ProductName" />
+                <input focus id="productName" class="form-control" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Product name..." ng-model="product.ProductName"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="productType">Product type:</label>
-                <input id="productType" class="form-control" type="number" placeholder="ProductType..." ng-model="product.ProductType" />
+                <input id="productType" class="form-control" type="number" placeholder="ProductType..." ng-model="product.ProductType"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="description">Description:</label>
-                <input id="description" class="form-control" type="text" placeholder="Description..." ng-model="product.Description" />
+                <input id="description" class="form-control" type="text" placeholder="Description..." ng-model="product.Description"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="stock">Stock:</label>
-                <input id="stock" class="form-control" type="number" placeholder="Stock..." ng-model="product.Stock" />
+                <input id="stock" class="form-control" type="number" placeholder="Stock..." ng-model="product.Stock"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="price">Price:</label>
-                <input id="price" class="form-control" type="number" placeholder="Price..." ng-model="product.Price" />
+                <input id="price" class="form-control" type="number" placeholder="Price..." ng-model="product.Price"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4" for="CreatedDate">Created date:</label>
+                <input id="CreatedDate" disabled="true" type="datetime" class="form-control" type="number" ng-model="product.CreatedDate" />
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">
-                    <button type="submit" ng-disabled="editProductForm.$invalid" class="btn btn-primary">Save</button>
+                    <button type="submit" ng-disabled="editProductForm.$invalid" class="btn btn-primary" ng-click="updateProduct(product)">Save</button>
                     <button type="button" ng-click="deleteProduct(product)" class="btn btn-default">Delete</button>
                 </div>
             </div>

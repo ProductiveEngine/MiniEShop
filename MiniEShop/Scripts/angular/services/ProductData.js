@@ -1,4 +1,20 @@
-﻿//eshopApp.factory('productData', function ($resource) {
+﻿eshopApp.service('ProductData', function ($resource) {
+    return $resource('/api/products/:id', { id: '@ProductID' }, {
+        update: {
+            method: 'PUT' // this method issues a PUT request
+        }
+    });
+
+});
+
+//Default function
+//get()
+//query()
+//save()
+//remove()
+//delete()
+
+//eshopApp.factory('ProductData', function ($resource) {
 //    return $resource('/api/products/:productId', { id: '@id' },
 //    {
 //        update: {
@@ -11,7 +27,7 @@
 
 //});
 
-//eshopApp.factory('productData', function ($resource) {
+//eshopApp.factory('ProductData', function ($resource) {
 //    var resource = $resource('/api/products/:id', { id: '@id' }, { "getAll": { method: "GET", isArray: true, params: { something: "foo" } } });
 //    return {
 //        getproduct: function (productId) {
@@ -29,18 +45,3 @@
   
 //});
 
-eshopApp.service('productData', function ($resource) {
-    console.log('in delete' );
-    return $resource('/api/products/:id', { id: '@ProductID' }, {
-        update: {
-            method: 'PUT' // this method issues a PUT request
-        }
-    });
-
-});
-//Default function
-//get()
-//query()
-//save()
-//remove()
-//delete()

@@ -8,10 +8,9 @@
         <h2>Manage Products</h2>
 
         <label for="lsProductName">Live search (By product name):</label>
-        <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch"/>
-        <a class="btn btn-default">New</a>
-        <hr>        
-        <h4 class="header header-small grey">Product list <a class="btn btn-default" ng-click="refreshProductsList()">Refresh</a></h4>                 
+        <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch"/>        
+        <hr>
+        <h4 class="header header-small grey">Product list <a class="btn btn-default" ng-click="refreshProductsList()">Refresh</a><a class="btn btn-default" ng-click="newProduct()">New</a></h4>       
         @* Product List *@
         <div class="container">
             <div class="row">
@@ -29,15 +28,8 @@
                     <div ui-view></div>
                 </div>
             </div>
-        </div>
-        
+        </div>        
     </div>
-
-   
-    @* Old way
-            <div id="content">
-            <ng:view></ng:view>
-        </div>*@
 </div>
 
 <script src="~/Scripts/angular.js" ng:autobind></script>

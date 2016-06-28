@@ -1,16 +1,22 @@
 ﻿'use strict';
 
 eshopApp.controller('ProductController',
-    function ProductController($scope, productData) {
+    function ProductController($scope, $state, ProductData) {
         $scope.sortorder = 'productName';
-        $scope.allProducts = productData.query();
+        $scope.allProducts = ProductData.query();
         $scope.refreshProductsList = function ()
         {
-            $scope.allProducts = productData.query();
+            $scope.allProducts = ProductData.query();
             
         };
+        $scope.$watch('liveSearch', function () {
+            $scope.allProducts = ProductData.query();
+        });
+        $scope.newProduct = function () {                      
+            $state.go('productEdit', {id: 0});
+        }
 
-        //$scope.$watch(function () { return productData.query(); },
+        //$scope.$watch(function () { return ProductData.query(); },
         //    function(value) {
         //        $scope.allProducts = value;
         //    });
