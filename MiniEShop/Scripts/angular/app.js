@@ -12,6 +12,12 @@ eshopApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: 'Edit',
             controller: 'EditProductController'
         })
+        .state('productTypeEdit',
+        {
+            url: '/productType',
+            templateUrl: 'Edit',
+            controller: 'EditProductTypeController'
+        })
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('about',

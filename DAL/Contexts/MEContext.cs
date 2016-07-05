@@ -12,6 +12,7 @@ namespace DAL.Contexts
         IDbSet<Product> Products { get; set; }
         IDbSet<Rating> Ratings { get; set; }
         IDbSet<Transaction> Transactions { get; set; }
+        IDbSet<ProductType> ProductTypes { get; set; }
 
     }
 
@@ -23,6 +24,7 @@ namespace DAL.Contexts
         public IDbSet<Product> Products { get; set; }
         public IDbSet<Rating> Ratings { get; set; }
         public IDbSet<Transaction> Transactions { get; set; }
+        public IDbSet<ProductType> ProductTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

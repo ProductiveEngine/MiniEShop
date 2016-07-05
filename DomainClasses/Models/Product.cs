@@ -13,7 +13,8 @@ namespace DomainClasses.Models
         [StringLength(100)]
         public string ProductName { get; set; }
 
-        public int? ProductType { get; set; }
+        [Required]
+        public int ProductTypeID { get; set; }        
 
         [StringLength(500)]
         public string Description { get; set; }
@@ -22,7 +23,8 @@ namespace DomainClasses.Models
 
         [Column(TypeName = "money")]
         public decimal? Price { get; set; }
-        
+
+        public virtual ProductType ProductType { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }        
         public virtual ICollection<Comment> Comments { get; set; }        
         public virtual ICollection<Rating> Ratings { get; set; }        

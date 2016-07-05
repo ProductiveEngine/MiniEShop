@@ -58,6 +58,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Transaction.cs" />

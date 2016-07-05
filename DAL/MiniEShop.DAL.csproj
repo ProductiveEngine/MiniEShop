@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Accessors\MemberAccessor.cs" />
     <Compile Include="Accessors\ProductAccessor.cs" />
+    <Compile Include="Accessors\PTypeAccessor.cs" />
     <Compile Include="Base\BaseContext.cs" />
     <Compile Include="Base\ContextHelpers.cs" />
     <Compile Include="Base\IContext.cs" />
@@ -61,13 +62,19 @@
     <Compile Include="Migrations\201606131658224_InitialCreate.Designer.cs">
       <DependentUpon>201606131658224_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201607051126118_productType.cs" />
+    <Compile Include="Migrations\201607051126118_productType.Designer.cs">
+      <DependentUpon>201607051126118_productType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepo\IEntityRepo.cs" />
     <Compile Include="Repositories\IRepo\IMemberRepo.cs" />
     <Compile Include="Repositories\IRepo\IProductRepo.cs" />
+    <Compile Include="Repositories\IRepo\IPTypeRepo.cs" />
     <Compile Include="Repositories\MemberRepo.cs" />
     <Compile Include="Repositories\ProductRepo.cs" />
+    <Compile Include="Repositories\PTypeRepo.cs" />
     <Compile Include="UOW\MEUOW.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606131658224_InitialCreate.resx">
       <DependentUpon>201606131658224_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607051126118_productType.resx">
+      <DependentUpon>201607051126118_productType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

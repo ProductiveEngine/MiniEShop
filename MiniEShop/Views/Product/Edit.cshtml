@@ -14,7 +14,10 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="productType">Product type:</label>
-                <input id="productType" class="form-control" type="number" placeholder="ProductType..." ng-model="product.ProductType"/>
+                <select id="productType" ng-model="product.ProductType" ng-options="opt.id as opt.name for opt in productTypes" >
+                    
+                    @* <option ng-repeat="obj in productTypes" value="{{obj.id}}">{{obj.name}}</option>*@
+                </select>
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="description">Description:</label>
