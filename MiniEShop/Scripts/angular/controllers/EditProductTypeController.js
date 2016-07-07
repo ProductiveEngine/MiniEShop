@@ -1,61 +1,98 @@
 ﻿'use strict';
 eshopApp.controller('EditProductTypeController',
-        function EditProductTypeController($scope, $stateParams, ProductTypeData, $log) {
+        function EditProductTypeController($scope, $stateParams, ProductTypeData, $log, notificationFactory) {
+            // PRIVATE FUNCTIONS 
+            //-----------------------------------------------
+            var requestSuccess = function () {                
+                notificationFactory.success();
+            }
+ 
+            var requestError = function () {
+                notificationFactory.error();
+            }
+
+            var isDirty = function (productType) {
+                return productType.Name != productType.ServerName;
+            }
+            //-----------------------------------------------
+            $scope.newItem = { Name: '' };
+
             $scope.addMode = false;
             $scope.toggleAddMode = function() {
                 $scope.addMode = !$scope.addMode;
+                $scope.newItem.Name = '';
             };
 
             $scope.toggleEditMode = function (productType) {
-                if ($scope.allProductTypes != undefined) {
-                    $scope.allProductTypes.forEach(function(entry) {
 
-                        if (entry.ProductTypeID === productType.ProductTypeID) {                            
-                            entry.EditMode = !productType.EditMode;                            
-                        }
-                    });
+                if ($scope.allProductTypes != undefined) {
+                    productType.EditMode = !productType.EditMode;
+
+                    if (!productType.EditMode) {
+                        productType.Name = productType.ServerName;
+                    } else {
+                        productType.ServerName = productType.Name;
+
+                        $scope.allProductTypes.forEach(function (entry) {
+                            if (productType.ProductTypeID != entry.ProductTypeID && entry.EditMode) {
+                                entry.Name = entry.ServerName;
+                                entry.EditMode = false;
+                            }                                
+                        });      
+                    }                    
                 }                
             };
 
             $scope.allProductTypes = ProductTypeData.query();
 
-            $scope.saveProductType = function () {
-                if ($scope.editProductTypeForm.$valid) {
-                    //$log.info('Form is valid');
-                    $scope.ProductType.CreatedDate = new Date();
+            $scope.saveProductType = function () {                
+                if ($scope.addForm.$valid) {
 
-                    ProductTypeData.save($scope.ProductType)
+                    $scope.newItem.CreatedDate = new Date();
+
+                    ProductTypeData.save($scope.newItem)
                         .$promise
                         .then(function (response) {
-                            //console.log('success', response);                                                        
+                            $scope.allProductTypes.unshift(response);
+                            $scope.toggleAddMode();
+                            requestSuccess();
                         })
                         .catch(function (response) { console.log('failure', response) });
                 }
             };
 
-            $scope.deleteProductType = function (ProductType) {
-                ProductType.$delete(function () {
+            $scope.deleteProductType = function (productType) {                
+                productType.$delete(function () {
+                    var index = $scope.allProductTypes.indexOf(productType);
+                    $scope.allProductTypes.splice(index, 1);
+                    
                 });             
             };
 
-            $scope.updateProductType = function (ProductType) {
+            $scope.updateProductType = function (form, productType) {
+                
+                if (form != undefined && form.$valid && productType != null) {
+                    productType.EditMode = false;
 
-                if (ProductType != null) {
-                    if (ProductType.ProductTypeID > 0) {
-                        ProductType.$update(function () {
+                    if (productType.ProductTypeID > 0 && isDirty(productType)) {
+                        productType.$update(function () {
+                            requestSuccess();
                         });
-                    } else {
-                        ProductType.CreatedDate = new Date();
 
-                        ProductTypeData.save(ProductType)
+                    } else {
+                        productType.CreatedDate = new Date();
+
+                        ProductTypeData.save(productType)
                         .$promise
                         .then(function (response) {
-                            //console.log('success', response);                                                        
+                            requestSuccess();
                         })
                         .catch(function (response) { console.log('failure', response) });
                     }
                 }
             };
+
+            
 
         }
 );

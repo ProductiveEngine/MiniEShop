@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace DomainClasses.Models
 {
@@ -14,8 +15,12 @@ namespace DomainClasses.Models
         public string Name { get; set; }
 
         [NotMapped]
+        public string ServerName { get; set; }
+
+        [NotMapped]
         public bool EditMode { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Product> Products { get; set; }
     }
 }

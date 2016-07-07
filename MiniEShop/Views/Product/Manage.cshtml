@@ -32,14 +32,16 @@
     </div>
 </div>
 
-<script src="~/Scripts/angular.js" ng:autobind></script>
-<script src="~/Scripts/angular-resource.js" ng:autobind></script>
-<script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
-<script src="~/Scripts/angular/app.js"></script>
-<script src="~/Scripts/angular/services/ProductData.js"></script>
-<script src="~/Scripts/angular/controllers/ProductController.js"></script>
-<script src="~/Scripts/angular/controllers/EditProductController.js"></script>
-
+@section Scripts{
+    <script src="~/Scripts/angular.js" ng:autobind></script>
+    <script src="~/Scripts/angular-resource.js" ng:autobind></script>
+    <script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
+    <script src="~/Scripts/angular-messages.js"></script>
+    <script src="~/Scripts/angular/app.js"></script>
+    <script src="~/Scripts/angular/services/ProductData.js"></script>
+    <script src="~/Scripts/angular/controllers/ProductController.js"></script>
+    <script src="~/Scripts/angular/controllers/EditProductController.js"></script>
+}
 @*<span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
     <form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
 

@@ -18,48 +18,51 @@
                     <td>
                         <div class="btn-toolbar">
                             <div class="btn-group">
-                                <i class="btn glyphicon glyphicon-floppy-disk" ng-click="createItem()" title="Create" ng-disabled="addForm.$invalid"></i>
+                                <i class="btn glyphicon glyphicon-floppy-disk" ng-click="saveProductType()" title="Create" ng-disabled="addForm.$invalid"></i>
                                 <i class="btn glyphicon glyphicon-remove" ng-click="toggleAddMode()" title="Cancel"></i>
                             </div>
                         </div>
                     </td>
                     <td>
                         <form name="addForm">
-                            <input type="text" ng-model="newItem.Name" class="form-control" required placeholder="Product type..." ng-keydown="saveOnEnter(pType, $event)" required/>
+                            <input type="text" ng-model="newItem.Name" class="form-control" minlength="1" required placeholder="Product type..." ng-keydown="saveOnEnter(pType, $event)"/>
                         </form>
-                    </td>                    
+                    </td>
                     <td>
-                        <form name="addForm">
-                            <input type="date" disabled ng-model="newItem.CreatedDate" class="form-control" />
+                        <form>
+                            <input type="date" disabled ng-model="newItem.CreatedDate" class="form-control"/>
                         </form>
                     </td>
                 </tr>
+                <!--Content-->
                 <tr ng-repeat="pType in allProductTypes">
+                    <!--Buttons column-->
                     <td>
-                        <div class="btn-toolbar" ng-show="pType.editMode == null || pType.editMode == false">
+                        <!--Edit + Delete-->
+                        <div class="btn-toolbar" ng-show="pType.EditMode == null || pType.EditMode == false">
                             <div class="btn-group">
                                 <i class="btn glyphicon glyphicon-edit" ng-click="toggleEditMode(pType)" title="Edit"></i>
-                                <i class="btn glyphicon glyphicon-trash" ng-click="deleteItem(pType)" title="Delete" data-toggle="modal"></i>
+                                <i class="btn glyphicon glyphicon-trash" ng-click="deleteProductType(pType)" title="Delete" data-toggle="modal"></i>
                             </div>
                         </div>
-                        <div class="btn-toolbar" ng-show="pType.editMode">
+                        <div class="btn-toolbar" ng-show="pType.EditMode">
                             <div class="btn-group">
-                                <i class="btn glyphicon glyphicon-floppy-disk" ng-click="updateItem(pType)" title="Save" ng-disabled="editForm.$invalid"></i>
+                                <i class="btn glyphicon glyphicon-floppy-disk" ng-click="updateProductType(editForm,pType)" title="Save" ng-disabled="editForm.$invalid"></i>
                                 <i class="btn glyphicon glyphicon-remove" ng-click="toggleEditMode(pType)" title="Cancel"></i>
                             </div>
                         </div>
                     </td>
                     <td style="vertical-align: middle">
-                        <span ng-show="pType.editMode == null || pType.editMode == false" ng-dblclick="toggleEditMode(pType)">
+                        <span ng-show="pType.EditMode == null || pType.EditMode == false" ng-dblclick="toggleEditMode(pType)">
                             {{pType.Name}}
                         </span>
                         <form name="editForm">
-                            <input ng-model="pType.name" ng-show="pType.editMode" required ng-keydown="updateOnEnter(pType, $event)" class="form-control"/>
+                            <input ng-model="pType.Name" ng-show="pType.EditMode" minlength="1" required ng-keydown="updateOnEnter(pType, $event)" class="form-control"/>
                         </form>
                     </td>
-                    <td style="vertical-align:middle">
-                        <span ng-show="pType.editMode == null || pType.editMode == false" ng-dblclick="toggleEditMode(pType)">
-                            {{pType.CreatedDate}}
+                    <td style="vertical-align: middle">
+                        <span ng-show="pType.EditMode == null || pType.EditMode == false" ng-dblclick="toggleEditMode(pType)">
+                            {{pType.CreatedDate}}                                                        
                         </span>                        
                     </td>
                 </tr>
@@ -70,9 +73,14 @@
     </div>
 </div>
 
-<script src="~/Scripts/angular.js" ng:autobind></script>
-<script src="~/Scripts/angular-resource.js" ng:autobind></script>
-<script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
-<script src="~/Scripts/angular/app.js"></script>
-<script src="~/Scripts/angular/services/ProductTypeData.js"></script>
-<script src="~/Scripts/angular/controllers/EditProductTypeController.js"></script>
+@section scripts
+{
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/angular.js" ng:autobind></script>
+    <script src="~/Scripts/angular-resource.js" ng:autobind></script>
+    <script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
+    <script src="~/Scripts/angular/app.js"></script>
+    <script src="~/Scripts/angular/services/ProductTypeData.js"></script>
+    <script src="~/Scripts/angular/factories/NotificationFactory.js"></script>
+    <script src="~/Scripts/angular/controllers/EditProductTypeController.js"></script>
+}

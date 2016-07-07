@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-var eshopApp = angular.module('eshopApp', ['ngResource', 'ui.router']);
+var eshopApp = angular.module('eshopApp', ['ngResource', 'ui.router', 'ngMessages']);
 
 eshopApp.config(function($stateProvider, $urlRouterProvider) {
    

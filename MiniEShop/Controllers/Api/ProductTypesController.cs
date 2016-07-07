@@ -99,7 +99,7 @@ namespace MiniEShop.Controllers.Api
         public async Task<IHttpActionResult> DeleteProductType(int id)
         {
             ProductType productType = await _pTypeBl.GetAll().FirstOrDefaultAsync(x => x.ProductTypeID == id);
-            if (productType == null)
+            if (!_pTypeBl.Remove(id))
             {
                 return NotFound();
             }
