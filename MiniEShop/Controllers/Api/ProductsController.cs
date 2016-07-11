@@ -80,7 +80,8 @@ namespace MiniEShop.Controllers.Api
 
             try
             {
-                await _productBl.SaveAsync(product);
+                   product.ProductType = null;
+                   await _productBl.SaveAsync(product);
             }
             catch (DbUpdateConcurrencyException)
             {

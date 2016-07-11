@@ -26,10 +26,7 @@ eshopApp.controller('ProductController',
                         });
             } else {
                 $scope.allProducts = ProductData.query();
-            }
-            
-
-            
+            }                        
         });
         $scope.newProduct = function () {                      
             $state.go('productEdit', {id: 0});

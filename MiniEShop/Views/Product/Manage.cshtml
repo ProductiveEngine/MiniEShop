@@ -3,12 +3,11 @@
 }
 
 <div ng-app="eshopApp">
-
     <div ng-controller="ProductController">
         <h2>Manage Products</h2>
 
         <label for="lsProductName">Live search (By product name):</label>
-        <input id="lsProductName" type="text" placeholder="search..." ng-model="liveSearch"/>        
+        <input id="lsProductName" type="text" placeholder="search..." class="form-control" ng-model="liveSearch"/>        
         <hr>
         <h4 class="header header-small grey">Product list <a class="btn btn-default" ng-click="refreshProductsList()">Refresh</a><a class="btn btn-default" ng-click="newProduct()">New</a></h4>       
         @* Product List *@
@@ -33,12 +32,15 @@
 </div>
 
 @section Scripts{
+    <script src="~/Scripts/toastr.js"></script>
     <script src="~/Scripts/angular.js" ng:autobind></script>
     <script src="~/Scripts/angular-resource.js" ng:autobind></script>
     <script src="~/Scripts/angular-ui-router.js" ng:autobind></script>
     <script src="~/Scripts/angular-messages.js"></script>
     <script src="~/Scripts/angular/app.js"></script>
     <script src="~/Scripts/angular/services/ProductData.js"></script>
+    <script src="~/Scripts/angular/services/ProductTypeData.js"></script>
+    <script src="~/Scripts/angular/factories/NotificationFactory.js"></script>
     <script src="~/Scripts/angular/controllers/ProductController.js"></script>
     <script src="~/Scripts/angular/controllers/EditProductController.js"></script>
 }

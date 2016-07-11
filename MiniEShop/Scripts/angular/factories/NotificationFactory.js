@@ -1,9 +1,21 @@
 ﻿eshopApp.factory('notificationFactory', function() {
     toastr.options = {
-        "showDuration": "100",
-        "hideDuration": "100",
-        "timeOut": "2000",
-        "extendedTimeOut": "5000",
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+        
     }
     
     return {
@@ -12,6 +24,7 @@
             if (text === undefined) {
                 text = '';
             }
+            //customs -> toastr.success("text", "title", {"iconClass": 'customer-info'});
             toastr.success("Success. " + text);
         },
         error: function (text) {

@@ -6,10 +6,6 @@ eshopApp.controller('EditProductTypeController',
             var requestSuccess = function () {                
                 notificationFactory.success();
             }
- 
-            var requestError = function () {
-                notificationFactory.error();
-            }
 
             var isDirty = function (productType) {
                 return productType.Name != productType.ServerName;
@@ -87,12 +83,11 @@ eshopApp.controller('EditProductTypeController',
                         .then(function (response) {
                             requestSuccess();
                         })
-                        .catch(function (response) { console.log('failure', response) });
+                        .catch(function(response) {
+                            notificationFactory.error(response);
+                            });
                     }
                 }
-            };
-
-            
-
+            };            
         }
 );

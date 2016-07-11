@@ -2,7 +2,7 @@
 
 var eshopApp = angular.module('eshopApp', ['ngResource', 'ui.router', 'ngMessages']);
 
-eshopApp.config(function($stateProvider, $urlRouterProvider) {
+eshopApp.config(function($stateProvider) {
    
     $stateProvider
         // HOME STATES AND NESTED VIEWS ========================================

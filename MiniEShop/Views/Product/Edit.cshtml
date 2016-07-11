@@ -6,22 +6,24 @@
     <div class="col-md-6">        
         @* <form class="form-inline" role="form"> *@
         @* Vertical no class on labels, no class on form *@
-        <form name="editProductForm" ng-submit="saveProduct()" class="form-horizontal" role="form">
+        <form name="editProductForm" class="form-horizontal" role="form">
             @*ng-submit="updateProduct()"*@
             <div class="form-group">
                 <label class="control-label col-sm-4" for="productName">Product name:</label>
-                <input focus id="productName" name="productName" class="form-control" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Product name..." ng-model="product.ProductName" ng-maxlength="100"/>                
+                @*ng-pattern="/^[-A-Za-z0-9]{2,20}$/"*@
+                <input focus id="productName" name="productName" class="form-control" required type="text" placeholder="Product name..." ng-model="product.ProductName" ng-maxlength="100"/>
                 <div ng-messages="editProductForm.productName.$error">
-                    <div ng-message="required">This field is required</div>
-                    <div ng-message="maxlength">Product name must not exceed 100 characters</div>
+                    <div ng-message="required" class="alert alert-danger col-sm-offset-4 col-sm-6" style="margin-top: 5px">Product name is required</div>
+                    <div ng-message="maxlength" class="alert alert-danger col-sm-offset-4 col-sm-6" style="margin-top: 5px">Product name must not exceed 100 characters</div>
                 </div>
-            </div>
+            </div>            
             <div class="form-group">
                 <label class="control-label col-sm-4" for="productType">Product type:</label>
-                <select id="productType" ng-model="product.ProductType" ng-options="opt.id as opt.name for opt in productTypes" >
-                    
+                <select id="productType" class="form-control" required ng-model="product.ProductTypeID" ng-options="opt.ProductTypeID as opt.Name for opt in productTypes">
+
                     @* <option ng-repeat="obj in productTypes" value="{{obj.id}}">{{obj.name}}</option>*@
                 </select>
+                <div ng-Hide="hasProductType(product)" class="alert alert-danger col-sm-offset-4 col-sm-6" style="margin-top: 5px">Product type is required</div>                
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="description">Description:</label>
@@ -38,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-sm-4" for="CreatedDate">Created date:</label>
-                <input id="CreatedDate" disabled="true" type="datetime" class="form-control" type="number" ng-model="product.CreatedDate" />
+                <input id="CreatedDate" disabled type="datetime" class="form-control" ng-model="product.CreatedDate" />
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-8">

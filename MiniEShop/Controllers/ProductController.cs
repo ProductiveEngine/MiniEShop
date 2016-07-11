@@ -8,12 +8,6 @@ namespace MiniEShop.Controllers
 {
     public class ProductController : Controller
     {
-        // GET: Product
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [Authorize]
         // GET: Product
         public ActionResult Manage()

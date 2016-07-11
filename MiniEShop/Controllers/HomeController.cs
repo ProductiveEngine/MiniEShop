@@ -13,13 +13,8 @@ namespace MiniEShop.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            var pBL = new ProductBL();
-            var s = pBL.Save(new Product {ProductName = "Test"});
-
-            ViewBag.UserName = MemberStateBL.State.UserName;
-
+            ViewBag.Message = "Mini E-Shop application.";
+            
             return View();
         }
 

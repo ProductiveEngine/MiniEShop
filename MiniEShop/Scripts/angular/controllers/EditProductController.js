@@ -1,16 +1,14 @@
 ﻿'use strict';
 eshopApp.controller('EditProductController',
-        function EditProductController($scope, $stateParams, ProductData, $log) {
-
-            $scope.productTypes = [
-                { id: 1, name: "Software" },
-                { id: 2, name: "Hardware" },
-                { id: 3, name: "Console" },
-                { id: 4, name: "Mobile" }
-            ];
+        function EditProductController($scope, $stateParams, ProductData, ProductTypeData, $log, notificationFactory) {
+            
             $scope.product = ProductData.get({
                 id: ($stateParams.id === undefined) ? 0 : $stateParams.id
-            });            
+            });
+            
+            $scope.hasProductType = function(product) {
+                return product.ProductTypeID > 0;
+            };
 
             $scope.saveProduct = function () {
                 if ($scope.editProductForm.$valid) {
@@ -20,14 +18,17 @@ eshopApp.controller('EditProductController',
                     ProductData.save($scope.product)
                         .$promise
                         .then(function(response) {
-                            //console.log('success', response);                                                        
+                            notificationFactory.success();
                         })
-                        .catch(function (response) { console.log('failure', response) });
+                        .catch(function(response) {
+                            notificationFactory.error();
+                        });
                 }
             };
 
             $scope.deleteProduct = function (product) {                
-                product.$delete(function () {                       
+                product.$delete(function () {
+                    notificationFactory.success();
                 });            
                 //ProductData.delete(product)
                 //    .$promise
@@ -41,7 +42,8 @@ eshopApp.controller('EditProductController',
 
                 if (product != null ) {
                     if (product.ProductID > 0) {
-                        product.$update(function() {
+                        product.$update(function () {
+                            notificationFactory.success();
                         });
                     } else {
                         product.CreatedDate = new Date();
@@ -49,12 +51,15 @@ eshopApp.controller('EditProductController',
                         ProductData.save(product)
                         .$promise
                         .then(function (response) {
-                            //console.log('success', response);                                                        
+                            notificationFactory.success();
                         })
-                        .catch(function (response) { console.log('failure', response) });
+                        .catch(function(response) {
+                            notificationFactory.error();
+                            });
                     }
                 }
             };
 
+            $scope.productTypes = ProductTypeData.query();
         }
 );
