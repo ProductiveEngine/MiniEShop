@@ -1,8 +1,18 @@
 #Mini e-shop
-This is a WEB application showcasing the use of the MVC6 and Angular JS.
+This is a simple web application showcasing the use of the MVC5 and Angular JS 1.x .
 
-#Features
-With this program you can view/create/edit/delete virtual products and put them into a cart.
+#Technologies
+Microsoft MVC5
+Microsoft Entity framework 6
+
+Google AngularJS v1.5.7
+Angular modules: ngResource, ngMessages, ui.router
+
+Bootstrap v3.3.6
+jquery-2.2.4
+toastr
+
+#Architecture
 
 #Getting started
 
