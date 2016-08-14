@@ -1,20 +1,52 @@
 #Mini e-shop
 This is a simple web application showcasing the use of the MVC5 and Angular JS 1.x .
+Tha data access layer has been designed as an enterprise level project.
 
 #Technologies
-Microsoft MVC5
-Microsoft Entity framework 6
-
-Google AngularJS v1.5.7
-Angular modules: ngResource, ngMessages, ui.router
-
-Bootstrap v3.3.6
-jquery-2.2.4
-toastr
+* Microsoft MVC5
+* Microsoft Entity framework 6
+* Google AngularJS v1.5.7
+* Angular modules: ngResource, ngMessages, ui.router
+* Bootstrap v3.3.6
+* jquery-2.2.4
+* toastr
 
 #Architecture
+<h3>Project structure</h3>
+
+![ProjectDiagram](ProjectDiagram.png)
+
+<h3>Namespace diagram</h3>
+
+![NamespaceDiagram](NamespaceDiagram.png)
+
+<h3>Important files in MiniEShop project</h3>
+
+Controllers
+>Api
+>>ProductsController
+>>ProductTypesController
+
+>Scripts
+>>angular
+>>>app
+>>>filters.js
+
+>>>services
+>>>>ProductData.js
+>>>>ProductTypeData.js
+
+>>>factories
+>>>>NotificationFactory.js
+
+>>>controllers
+>>>>ProductController.js
+>>>>EditProductTypeController.js
+>>>>EditProductController.js
 
 #Getting started
+1. Run the database script from the DB Scripts folder against your own database
+2. Change the connection string in Web.config: <add name="MEDB" connectionString=...
 
 #License
 The MIT License (MIT)
