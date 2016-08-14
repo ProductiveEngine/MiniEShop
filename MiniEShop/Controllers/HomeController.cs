@@ -13,7 +13,7 @@ namespace MiniEShop.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Mini E-Shop application.";
+            ViewBag.Message = "Mini EShop 2 application";
             
             return View();
         }
