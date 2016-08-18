@@ -2,17 +2,27 @@
 This is a simple web application showcasing the use of the MVC5 and Angular JS 1.x .
 Tha data access layer has been designed as an enterprise level project.
 
-#IDE
-Microsoft Visual Studio
+#Features
+* Angular JS 1.x
+  - ngResource
+  - ngMessages
+  - ui.router
+* Enterprise level architecture for the data access layer
+  - Repository 
+  - Unit of work
+  - Accessors
+* Web Api
 
 #Technologies
 * Microsoft MVC5
 * Microsoft Entity framework 6
 * Google AngularJS v1.5.7
-* Angular modules: ngResource, ngMessages, ui.router
 * Bootstrap v3.3.6
 * jquery-2.2.4
 * toastr
+
+#IDE
+Microsoft Visual Studio
 
 #Architecture
 <h3>Project structure</h3>
