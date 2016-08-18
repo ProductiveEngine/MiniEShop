@@ -2,6 +2,9 @@
 This is a simple web application showcasing the use of the MVC5 and Angular JS 1.x .
 Tha data access layer has been designed as an enterprise level project.
 
+#IDE
+Microsoft Visual Studio
+
 #Technologies
 * Microsoft MVC5
 * Microsoft Entity framework 6
