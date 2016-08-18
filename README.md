@@ -23,7 +23,7 @@ Microsoft Visual Studio
 
 ![NamespaceDiagram](NamespaceDiagram.png)
 
-<h3>Important files in MiniEShop project</h3>
+#Important files in MiniEShop project
 
 Controllers
 >Api
